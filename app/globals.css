@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #1c1917;
+  --color-line: #e7e5e4;
+  --color-canvas: #fafaf9;
+  --color-brand-50: #eefbf3;
+  --color-brand-100: #d6f5e1;
+  --color-brand-200: #b0e9c7;
+  --color-brand-300: #7cd6a6;
+  --color-brand-400: #46bb81;
+  --color-brand-500: #23a066;
+  --color-brand-600: #158151;
+  --color-brand-700: #126743;
+  --color-brand-800: #125237;
+  --color-brand-900: #10432f;
+  --color-saffron-50: #fff8ed;
+  --color-saffron-100: #ffefd4;
+  --color-saffron-400: #fb9f3c;
+  --color-saffron-500: #f58220;
+  --color-saffron-600: #d9650f;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --animate-fade: fade 0.2s ease-out;
+  --animate-fade-up: fade-up 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-pop: pop 0.25s cubic-bezier(0.2, 0.8, 0.2, 1.4);
+  --animate-sheet: sheet 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --animate-drawer: drawer 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --animate-toast: toast 0.3s cubic-bezier(0.2, 0.8, 0.2, 1.2);
+  --animate-check: check 0.5s cubic-bezier(0.2, 0.8, 0.2, 1.3) both;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  @keyframes fade { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes fade-up { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+  @keyframes pop { 0% { transform: scale(0.85) } 100% { transform: scale(1) } }
+  @keyframes sheet { from { transform: translateY(24px); opacity: 0 } to { transform: none; opacity: 1 } }
+  @keyframes drawer { from { transform: translateX(100%) } to { transform: none } }
+  @keyframes toast { from { transform: translateY(12px) scale(0.96); opacity: 0 } to { transform: none; opacity: 1 } }
+  @keyframes check { 0% { transform: scale(0.4); opacity: 0 } 100% { transform: scale(1); opacity: 1 } }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
